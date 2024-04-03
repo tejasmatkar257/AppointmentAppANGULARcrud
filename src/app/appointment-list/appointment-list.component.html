@@ -1,0 +1,49 @@
+<div class="container">
+    <div class="card mt-3">
+        <div class="row">
+            <div class="col">
+                <h2 class="text-center">Create New Appointment</h2>
+            </div>
+        </div>
+        <div id="firstrow" class="row mt-2">
+            <div class="col-md-6 mb-3">
+                <input class="form-control" [(ngModel)]="newAppointmentTitle" placeholder="Appointment Description"
+                    [ngModelOptions]="{standalone: true}">
+            </div>
+            <div class="col-md-4 mb-3">
+                <input class="form-control" [(ngModel)]="newAppointmentDate" type="date" placeholder="Appointment Date"
+                    [ngModelOptions]="{standalone: true}">
+            </div>
+            <div class="col-md-2">
+                <button (click)="addAppointment()" class="btn btn-primary w-100">Add</button>
+            </div>
+        </div>
+    </div>
+    <div class="card mt-3">
+        <h2 class="card-header text-center">Appointments</h2>
+        <div class="card-body table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Title</th>
+                        <th scope="col">Date</th>
+                        <th scope="col">Options</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let appointment of appointments; index as i">
+                        <td>{{appointment.id}}</td>
+                        <td>{{appointment.title}}</td>
+                        <td>{{appointment.date | date:"dd/MM/yyyy"}}</td>
+                        <td>
+                            <button type="button" class="btn btn-warning" (click)="editAppointment(i)">Edit</button>
+                            <button class="btn btn-danger" (click)="deleteAppointment(i)">Delete</button>
+                        </td>
+                    </tr>
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+</div>
